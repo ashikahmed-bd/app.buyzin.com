@@ -136,7 +136,7 @@
   }
 
   .base__button {
-    @apply bg-primary text-white px-3.5 py-1.5 rounded;
+    @apply inline-flex items-center gap-2 rounded-lg bg-primary text-white px-3 py-2 text-sm font-medium  transition hover:opacity-90;
   }
 
   .form__group {

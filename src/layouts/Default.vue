@@ -139,20 +139,28 @@ const navigation = [
   },
 
   {
-    label: 'Payouts',
-    icon: 'i-lucide-wallet',
+    label: 'Subscription',
+    icon: 'i-lucide-badge-check',
     children: [
       {
         label: 'Overview',
-        to: '/payouts',
+        to: '/subscription',
       },
       {
-        label: 'Transactions',
-        to: '/payouts/transactions',
+        label: 'Plans',
+        to: '/subscription/plans',
       },
       {
-        label: 'Bank Account',
-        to: '/payouts/bank-account',
+        label: 'Billing History',
+        to: '/subscription/billing',
+      },
+      {
+        label: 'Invoices',
+        to: '/subscription/invoices',
+      },
+      {
+        label: 'Commission',
+        to: '/subscription/commission',
       },
     ],
   },

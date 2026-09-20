@@ -1,23 +1,23 @@
-import { useAuthStore } from "@/stores/auth";
-import axios from "axios";
+import { useAuthStore } from '@/stores/auth'
+import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: "http://127.0.0.1:8000", // http://127.0.0.1:8000  https://api.buyzin.com
+  baseURL: 'https://api.buyzin.com', // http://127.0.0.1:8000  https://api.buyzin.com
   withCredentials: false,
   withXSRFToken: false,
-});
+})
 
 // Request interceptor
 apiClient.interceptors.request.use(
   (config) => {
-    const authStore = useAuthStore();
+    const authStore = useAuthStore()
     if (authStore.token) {
-      config.headers["Authorization"] = `Bearer ${authStore.token}`;
+      config.headers['Authorization'] = `Bearer ${authStore.token}`
     }
-    return config;
+    return config
   },
   (error) => Promise.reject(error),
-);
+)
 
 // Response interceptor
 apiClient.interceptors.response.use(
@@ -34,16 +34,16 @@ apiClient.interceptors.response.use(
         // window.location.href = "/login";
 
         // send the error to catch()
-        return Promise.reject(error);
+        return Promise.reject(error)
       }
 
       // For all other errors → pass to catch()
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
 
     // If no response (network error etc.)
-    return Promise.reject(error);
+    return Promise.reject(error)
   },
-);
+)
 
-export default apiClient;
+export default apiClient

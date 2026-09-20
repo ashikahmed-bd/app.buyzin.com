@@ -47,15 +47,30 @@ const router = createRouter({
       meta: { auth: true },
     },
     {
-      path: '/products/categories',
-      name: 'products-categories',
-      component: () => import('../views/products/categories.vue'),
+      path: '/products/:product/pricing',
+      name: 'products-pricing',
+      component: () => import('../views/products/pricing.vue'),
       meta: { auth: true },
     },
+
     {
-      path: '/products/brands',
-      name: 'products-brands',
-      component: () => import('../views/products/brands.vue'),
+      path: '/products/:product/variants',
+      name: 'products-variants',
+      component: () => import('../views/products/variants.vue'),
+      meta: { auth: true },
+    },
+
+    {
+      path: '/products/:product/media',
+      name: 'products-media',
+      component: () => import('../views/products/media.vue'),
+      meta: { auth: true },
+    },
+
+    {
+      path: '/products/:product/seo',
+      name: 'products-seo',
+      component: () => import('../views/products/seo.vue'),
       meta: { auth: true },
     },
     {
@@ -177,23 +192,35 @@ const router = createRouter({
       meta: { auth: true },
     },
 
-    // Payouts
+    // Subscriptions
     {
-      path: '/payouts',
-      name: 'payouts',
-      component: () => import('../views/payouts/index.vue'),
+      path: '/subscription',
+      name: 'subscription',
+      component: () => import('../views/subscription/index.vue'),
       meta: { auth: true },
     },
     {
-      path: '/payouts/transactions',
-      name: 'payouts-transactions',
-      component: () => import('../views/payouts/transactions.vue'),
+      path: '/subscription/plans',
+      name: 'subscription-plans',
+      component: () => import('../views/subscription/plans.vue'),
       meta: { auth: true },
     },
     {
-      path: '/payouts/bank-account',
-      name: 'payouts-bank-account',
-      component: () => import('../views/payouts/bank-account.vue'),
+      path: '/subscription/billing',
+      name: 'subscription-billing',
+      component: () => import('../views/subscription/billing.vue'),
+      meta: { auth: true },
+    },
+    {
+      path: '/subscription/invoices',
+      name: 'subscription-invoices',
+      component: () => import('../views/subscription/invoices.vue'),
+      meta: { auth: true },
+    },
+    {
+      path: '/subscription/commission',
+      name: 'subscription-commission',
+      component: () => import('../views/subscription/commission.vue'),
       meta: { auth: true },
     },
 
