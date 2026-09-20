@@ -73,19 +73,11 @@ const dateRange = computed(() => {
               </div>
             </template>
           </UPopover>
-
-          <button
-            type="button"
-            class="flex items-center justify-center gap-2 rounded bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary/90"
-          >
-            Add Product
-          </button>
         </div>
       </section>
 
       <!-- Stats -->
       <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <!-- Total Orders -->
         <div class="rounded-xl border border-blue-100 bg-blue-50/40 p-4">
           <div class="flex items-start gap-3">
             <div

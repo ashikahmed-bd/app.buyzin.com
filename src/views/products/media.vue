@@ -114,59 +114,65 @@ const addVideo = () => {
       <div class="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_290px]">
         <div class="min-w-0 space-y-4">
           <section class="rounded-xl border border-slate-200 bg-white">
-            <div class="flex items-start gap-3 border-b border-slate-100 px-4 py-3.5 sm:px-5">
+            <div class="flex items-start gap-3 border-b border-slate-100 px-4 py-4 sm:px-5">
               <div
-                class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600"
+                class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600"
               >
                 <UIcon name="i-lucide-image" class="size-4" />
               </div>
 
-              <div>
+              <div class="min-w-0">
                 <h2 class="text-sm font-semibold text-slate-900">
                   Cover Image
                   <span class="text-red-500">*</span>
                 </h2>
 
-                <p class="mt-0.5 text-sm text-slate-500">
+                <p class="mt-1 max-w-2xl text-xs leading-5 text-slate-500">
                   This will be the main image of your product. It will be shown in search results
-                  and product pages.
+                  and on product pages.
                 </p>
               </div>
             </div>
 
-            <div class="p-4">
-              <div class="flex flex-col gap-3 sm:flex-row">
+            <div class="p-4 sm:p-5">
+              <div class="grid gap-4 md:grid-cols-[minmax(0,1fr)_220px]">
                 <div
-                  class="flex flex-1 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50/40 px-4 py-4 text-center transition hover:border-indigo-400 hover:bg-indigo-50/30"
+                  class="flex min-h-56 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50/50 px-5 py-6 text-center transition hover:border-indigo-400 hover:bg-indigo-50/30"
                 >
-                  <UIcon name="i-lucide-image-plus" class="size-7 text-indigo-500" />
-                  <p class="mt-2 text-sm font-medium text-slate-700">
+                  <div
+                    class="flex size-11 items-center justify-center rounded-full bg-indigo-50 text-indigo-600"
+                  >
+                    <UIcon name="i-lucide-image-plus" class="size-5" />
+                  </div>
+
+                  <p class="mt-3 text-sm font-medium text-slate-700">
                     Drag & drop or
-                    <span class="text-indigo-600"> click to upload </span>
+                    <span class="text-indigo-600">click to upload</span>
                   </p>
 
-                  <p class="mt-1 text-sm text-slate-400">JPG, PNG, WebP (Max 5MB)</p>
-                  <p class="text-sm text-slate-400">Recommended size: 1000 × 1000 px</p>
+                  <p class="mt-1 text-xs text-slate-400">JPG, PNG, WebP · Max 5MB</p>
+
+                  <p class="mt-0.5 text-xs text-slate-400">Recommended size: 1000 × 1000 px</p>
 
                   <button
                     type="button"
-                    class="mt-2 inline-flex h-8 items-center gap-1.5 rounded-md border border-slate-200 bg-white px-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                    class="mt-4 inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
                   >
                     <UIcon name="i-lucide-upload" class="size-3.5" />
-
                     Choose File
                   </button>
                 </div>
 
                 <div
-                  class="relative w-full shrink-0 overflow-hidden rounded-lg border border-slate-200 bg-slate-100 sm:max-w-2xs"
+                  class="relative aspect-square w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-50"
                 >
-                  <img :src="coverImage" alt="Cover image" class="w-full object-cover" />
+                  <img :src="coverImage" alt="Cover image" class="size-full object-cover" />
+
                   <button
                     type="button"
-                    class="absolute bottom-1.5 right-1.5 flex size-7 items-center justify-center rounded-md border border-slate-200 bg-white/95 text-slate-600 hover:bg-red-50 hover:text-red-500"
+                    class="absolute right-2 top-2 flex size-8 items-center justify-center rounded-lg border border-slate-200 bg-white/95 text-slate-600 shadow-sm transition hover:bg-red-50 hover:text-red-500"
                   >
-                    <UIcon name="i-lucide-trash-2" class="size-3.5" />
+                    <UIcon name="i-lucide-trash-2" class="size-4" />
                   </button>
                 </div>
               </div>

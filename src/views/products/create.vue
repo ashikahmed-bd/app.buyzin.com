@@ -45,76 +45,24 @@ const countries = ['Bangladesh', 'China', 'India', 'United States']
 
 <template>
   <Default>
-    <main>
-      <!-- Header -->
-      <header class="mb-5 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <h1 class="text-lg font-semibold text-slate-900">Create Product</h1>
-
-          <p class="mt-0.5 text-sm text-slate-500">
+    <main class="space-y-4">
+      <header class="flex flex-wrap items-start justify-between gap-4">
+        <div class="block">
+          <h1 class="text-lg font-semibold text-title">Create Product</h1>
+          <p class="mt-0.5 text-sm text-body">
             Add your product details to list it on the marketplace
           </p>
         </div>
 
         <div class="flex items-center gap-2">
-          <button
-            type="button"
-            class="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-          >
+          <button type="button" class="base__button">
             <UIcon name="i-lucide-save" class="size-4" />
-            Save as Draft
+            <span>Save as Draft</span>
           </button>
-
-          <RouterLink
-            :to="{
-              name: 'products-pricing',
-              params: { product: '01m2wc2mth4m8j14fpp1jtdtpz' },
-            }"
-            class="inline-flex h-9 items-center gap-2 rounded-lg bg-indigo-600 px-3 text-sm font-medium text-white transition hover:bg-indigo-700"
-          >
-            <UIcon name="i-lucide-upload" class="size-4" />
-            Publish Product
-          </RouterLink>
         </div>
       </header>
 
-      <!-- Stepper -->
-      <div class="mb-5 rounded-xl border border-slate-200 bg-white px-4 py-5 sm:px-6">
-        <div class="relative">
-          <!-- Line -->
-          <div class="absolute left-[7%] right-[7%] top-4 hidden h-px bg-slate-200 sm:block" />
-
-          <div class="relative grid grid-cols-2 gap-5 sm:grid-cols-5">
-            <div
-              v-for="step in steps"
-              :key="step.number"
-              class="relative flex flex-col items-center text-center"
-            >
-              <div
-                class="relative z-10 flex size-8 items-center justify-center rounded-full border text-sm font-medium"
-                :class="
-                  step.number === 1
-                    ? 'border-indigo-600 bg-indigo-600 text-white'
-                    : 'border-slate-300 bg-white text-slate-500'
-                "
-              >
-                {{ step.number }}
-              </div>
-
-              <p
-                class="mt-2 text-sm font-medium"
-                :class="step.number === 1 ? 'text-indigo-600' : 'text-slate-700'"
-              >
-                {{ step.title }}
-              </p>
-
-              <p class="mt-0.5 text-sm text-slate-400">
-                {{ step.description }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <StepProgress :current="1" />
 
       <!-- Main -->
       <div class="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
