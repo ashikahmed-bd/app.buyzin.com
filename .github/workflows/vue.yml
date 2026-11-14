@@ -1,0 +1,85 @@
+name: Deploy Vue.js to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Create production env
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_APP_URL }}" > .env.production
+
+      - name: Build Vue project
+        run: npm run build
+
+      - name: SSH Test
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: whoami
+
+      - name: Create frontend folder
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            mkdir -p /var/www/app.buyzin.com
+
+      - name: Clean old build files
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            rm -rf /var/www/app.buyzin.com/dist/*
+
+      - name: Upload dist files
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          source: "dist/*"
+          target: "/var/www/app.buyzin.com/"
+
+      - name: Set permissions & restart nginx
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            chown -R www-data:www-data /var/www/app.buyzin.com
+
+            find /var/www/app.buyzin.com -type f -exec chmod 644 {} \;
+
+            find /var/www/app.buyzin.com -type d -exec chmod 755 {} \;
+
+            systemctl reload nginx
