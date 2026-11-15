@@ -23,6 +23,46 @@ const router = createRouter({
       name: "customers",
       component: () => import("@/views/customers/index.vue"),
     },
+    {
+      path: "/stores",
+      name: "stores",
+      component: () => import("@/views/stores/index.vue"),
+    },
+    {
+      path: "/categories",
+      name: "categories",
+      component: () => import("@/views/categories/index.vue"),
+    },
+    {
+      path: "/brands",
+      name: "brands",
+      component: () => import("@/views/brands/index.vue"),
+    },
+    {
+      path: "/subscription",
+      name: "subscription",
+      component: () => import("@/views/subscription/index.vue"),
+    },
+    {
+      path: "/marketing",
+      name: "marketing",
+      component: () => import("@/views/marketing/index.vue"),
+    },
+    {
+      path: "/analytics",
+      name: "analytics",
+      component: () => import("@/views/analytics/index.vue"),
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: () => import("@/views/settings/index.vue"),
+    },
+    {
+      path: "/support",
+      name: "support",
+      component: () => import("@/views/support/index.vue"),
+    },
   ],
 });
 
